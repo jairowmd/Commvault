@@ -1,0 +1,32 @@
+POST - Login to the commcell
+
+import requests
+import jsonurl = "http://COMMSERVER"payload = json.dumps({
+  "password": "SENHA",
+  "username": "USUARIO",
+  "timeout": 30
+})
+headers = {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json',
+  'Cookie': 'JSESSIONID=XXXXX'
+}response = requests.request("POST", url, headers=headers, data=payload)print(response.text)
+
+---------------------------------------------------------------------------------------
+
+GETID - Filter client machines
+
+import requestsurl = "http://COMMSERVER:XX/SearchSvc/CVWebService.svc/GetId?clientName=CLIENTE1"payload={}
+headers = {
+  'Accept': 'application/json',
+  'Authtoken': 'QSDK xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+}response = requests.request("GET", url, headers=headers, data=payload)print(response.text)
+
+---------------------------------------------------------------------------------------
+JOB - Get a list of the backup jobs
+
+import requestsurl = "http://COMMSERVER:81/SearchSvc/CVWebService.svc/Job?clientId=73&completedJobLookupTime=86400&Accept=application/json"payload={}
+headers = {
+  'Accept': 'application/json',
+  'Authtoken': 'QSDK xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+}response = requests.request("GET", url, headers=headers, data=payload)print(response.text)
